@@ -1,7 +1,6 @@
 .DS_Store
 node_modules
-# Let’s keep our generated dist directory so that we can always keep a pristine copy of what we’ve deployed to Heroku by removing dist/ from .gitigore
-# /dist 
+/dist
 
 # local env files
 .env.local
