@@ -43,7 +43,7 @@ export default {
       container: this.$refs.map,
       interactive: false,
       style:
-        this.mapStyle || "mapbox://styles/haxzie/ck7h838qb0bik1iofe0k2i3f2",
+        this.mapStyle || "mapbox://styles/sherm8n/ck7qxj5a01oc31it9npsvusc7",
       center: [this.viewState.longitude, this.viewState.latitude],
       zoom: this.viewState.zoom,
       pitch: this.viewState.pitch,

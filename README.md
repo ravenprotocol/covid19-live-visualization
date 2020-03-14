@@ -1,11 +1,11 @@
 # COVID19 Visualization
 > Please note. The data used in the visualization is from an [opensource project](https://github.com/ExpDev07/coronavirus-tracker-api). We don't guarantee accurate numbers, but we are trying our best to find a reliable source of data.
 
-![](https://github.com/localeai/covid19-live-visualization/raw/master/public/meta.png)
+![](https://github.com/ravenprotocol/covid19-live-visualization/raw/master/public/meta.png)
 ## Project setup
 ```bash
 # Clone the project
-git clone https://github.com/localeai/covid19-live-visualization.git
+git clone https://github.com/ravenprotocol/covid19-live-visualization.git
 
 # Install dependencies
 npm install
