@@ -12,7 +12,7 @@
       <div v-show="showPanel" class="layers-panel">
         <div class="panel-header">
           <i class="material-icons md-18">layers</i>
-          <h3 class="title">Layers</h3>
+          <h3 class="title">Click below to see confirmed cases, recoveries, and deaths.</h3>
           <i class="material-icons md-18 close-btn" @click="togglePanel"
             >clear</i
           >

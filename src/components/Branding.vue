@@ -1,6 +1,6 @@
 <template>
   <div class="branding">
-    <a href="https://locale.ai" target="_blank" rel="noopener">
+    <a href="https://ravenprotocol.com" target="_blank" rel="noopener">
       <img src="@/assets/Brand-text.png" alt="localeai" />
     </a>
   </div>
