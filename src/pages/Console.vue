@@ -7,12 +7,20 @@
         :latitude="0"
         :longitude="0"
         :layers="geoLayers"
-        @viewStateChange="hidePopup"
+        @viewStateChange="handleViewStateChanged"
+        @viewClicked="handleViewClicked"
       />
-      <GitHubLink/>
-      <LayersPanel :layers="getLayers" />
-      <MapChooser :visualizations="getVisualizations" />
-      <GeoPopup />
+
+      <!-- Controls Layer -->
+      <div id="controls">
+        <GitHubLink />
+        <LayersPanel :layers="getLayers" />
+        <MapChooser :visualizations="getVisualizations" />
+        <GeoPopup />
+      </div>
+
+      <!-- Hidden Layer -->
+      <div @click="setHiddenLayer" v-if="isHiddenLayerVisible" id="hidden-layer"></div>
     </div>
   </div>
 </template>
@@ -25,6 +33,7 @@ import MapChooser from "@/modules/MapManager/MapChooser";
 import GeoPopup from "@/components/GeoPopup";
 import { mapGetters, mapActions } from "vuex";
 import GitHubLink from "@/components/GitHubLink";
+import log from "@deck.gl/core/dist/es5/utils/log";
 
 export default {
   components: {
@@ -46,6 +55,10 @@ export default {
       "getVisualizations",
       "getPopupData"
     ]),
+    ...mapGetters("UI", ["isControlsVisible"]),
+    isHiddenLayerVisible() {
+      return this.$store.getters.isHiddenLayerVisible;
+    },
     getAccessToken() {
       return process.env.VUE_APP_MAPBOX_TOKEN;
     }
@@ -58,12 +71,23 @@ export default {
       "getActiveGeoLayer",
       "setPopupData"
     ]),
+    ...mapActions("UI", ["hideControls"]),
     async loadLayers() {
       this.geoLayers = [await this.getActiveGeoLayer()];
     },
-    hidePopup() {
+    handleViewStateChanged() {
       if (this.getPopupData.show) {
         this.setPopupData({ show: false });
+      }
+      // hide the controls on view state change
+      if (this.isControlsVisible) {
+        this.hideControls();
+      }
+    },
+    handleViewClicked() {
+       // hide the controls on view clicks
+      if (this.isControlsVisible) {
+        this.hideControls();
       }
     }
   },
@@ -84,12 +108,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#controls {
+  z-index: 20;
+}
+
+#hidden-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.33);
+}
+
 .console-layout {
   display: flex;
   flex-direction: column;
   height: 100%;
 
   .content-area {
+    z-index: 20;
     display: flex;
     height: 100%;
     position: relative;

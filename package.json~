@@ -31,9 +31,12 @@
     "@vue/cli-service": "^4.2.3",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^6.2.2",
+<<<<<<< HEAD
+    "eslint-plugin-vue": "^6.2.1",
     "express": "^4.17.1",
+=======
     "eslint-plugin-vue": "^6.2.2",
+>>>>>>> upstream/master
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
     "serve-static": "^1.14.1",
